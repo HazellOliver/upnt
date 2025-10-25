@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UPNT Patient Portal | Manage Your Urology Care Online</title>
+  <meta name="description" content="Access your Urology Partners of North Texas (UPNT) patient portal to manage appointments, test results, and communicate securely with your care team anytime, anywhere." />
+  <link rel="canonical" href="https://www.yourdomain.com/{{PAGE_SLUG}}" />
+  <meta name="robots" content="index, follow" />
+
+  <style>
+    :root {
+      --primary: #007bff;
+      --secondary: #0056b3;
+      --accent: #00bfa6;
+      --light-bg: #f4f9ff;
+      --dark-text: #1c1c1c;
+      --gray-text: #555;
+      --radius: 12px;
+      --transition: 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px 120px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: var(--light-bg);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark-text);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: -60px auto 0;
+      padding: 0 20px 80px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      padding: 50px;
+      margin-top: 60px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2rem;
+    }
+
+    .section p {
+      text-align: center;
+      color: var(--gray-text);
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background: var(--light-bg);
+      padding: 25px 20px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .feature p {
+      color: var(--gray-text);
+      font-size: 0.95rem;
+    }
+
+    .steps ol {
+      max-width: 700px;
+      margin: 0 auto;
+      padding-left: 20px;
+    }
+
+    .steps li {
+      background: #fff;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-left: 4px solid var(--primary);
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .steps li:hover {
+      background: var(--light-bg);
+      transform: translateX(5px);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta a {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 40px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .cta a:hover {
+      background: #00997f;
+    }
+
+    footer {
+      background: #002b5c;
+      color: #d9e2f3;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .section {
+        padding: 35px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#" class="logo">UPNT Portal</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#steps">Get Started</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>UPNT Patient Portal</h1>
+    <p>Your personalized access to the Urology Partners of North Texas — appointments, test results, and messages all in one secure online space.</p>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h2>About the Portal</h2>
+      <p>
+        The <strong>UPNT Patient Portal</strong> is a secure web-based platform that empowers patients to take charge of their urological health. From viewing records to scheduling visits, it provides seamless digital access to healthcare.
+      </p>
+    </section>
+
+    <section id="features" class="section">
+      <h2>Key Features</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>24/7 Access</h3>
+          <p>Log in anytime to review test results, upcoming visits, or your medical summary on desktop or mobile.</p>
+        </div>
+        <div class="feature">
+          <h3>Secure Messaging</h3>
+          <p>Privately communicate with your healthcare team for non-urgent queries, prescriptions, or advice.</p>
+        </div>
+        <div class="feature">
+          <h3>Appointment Control</h3>
+          <p>Easily book, reschedule, or cancel appointments with real-time updates and reminders.</p>
+        </div>
+        <div class="feature">
+          <h3>Easy Billing</h3>
+          <p>Check statements, view insurance details, and pay your bills securely without hassle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps" class="section steps">
+      <h2>How to Get Started</h2>
+      <ol>
+        <li>Go to the official UPNT website and click “Patient Portal”.</li>
+        <li>Register using your patient ID and email address.</li>
+        <li>Verify your account and set up your secure password.</li>
+        <li>Log in and start managing your health online.</li>
+      </ol>
+      <div class="cta">
+        <a href="https://www.upnt.com/patient-portal" target="_blank" rel="noopener">Access the Portal</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>© 2025 Urology Partners of North Texas | All Rights Reserved</p>
+    <p>Empowering patients through digital care solutions.</p>
+  </footer>
+
+  <script>
+    // Scroll animation for fade-in sections
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    sections.forEach((section) => observer.observe(section));
+  </script>
+</body>
+</html>
